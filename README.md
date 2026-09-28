@@ -1,28 +1,18 @@
 # Room Design Studio App
 
-An installable Progressive Web App (PWA) based on the Room Design Studio project.
-
-**Live app:** [Open Room Design Studio](https://menakavemula64-hue.github.io/room-design-studio-app/)
+An installable web app for previewing room photos, styles, and accent colors. It is a separate copy of the Room Design Studio website.
 
 ## Features
 
-- Choose a room type, photo style, and accent color.
-- Upload a photo for a local room preview.
-- Install the app from a supported mobile browser.
-- Reopen the cached app shell offline after the first visit.
+- Choose a room type and preview its sample photo.
+- Apply a visual filter and accent color.
+- Upload a photo for a local preview.
+- Install the app from a supported browser.
+- Open the cached app shell while offline.
 
 ## How it works
 
-- `index.html` contains the page, styles, room controls, and install button.
-- `manifest.webmanifest` defines the app name, display mode, and icons.
-- `service-worker.js` caches the main app files for offline use.
-- `icon-192.png` and `icon-512.png` provide app icons.
-
-The service worker is registered by the page with:
-
-```js
-navigator.serviceWorker.register("./service-worker.js");
-```
+The page markup, styles, and interaction code are in `index.html`. `manifest.webmanifest` provides the app name, display mode, and icons. `service-worker.js` caches the app shell so it can open without a network connection after the first visit.
 
 ## Run locally
 
@@ -32,13 +22,15 @@ Service workers need HTTPS or localhost. From this folder, run:
 python -m http.server 8765
 ```
 
-Then open `http://localhost:8765/`.
+Then open `http://localhost:8765/` in your browser.
 
 ## Install on a phone
 
-- Android: open the live HTTPS link in Chrome and select **Install app** or **Add to Home screen**.
-- iPhone: open the live HTTPS link in Safari, tap **Share**, then **Add to Home Screen**.
+- Android: open the published HTTPS site in Chrome, then use **Install app** or **Add to Home screen**.
+- iPhone: open the published HTTPS site in Safari, tap **Share**, then **Add to Home Screen**.
 
-## Offline and privacy notes
+## Offline and privacy
 
-The app shell is cached after the first visit. Sample Unsplash photos need an internet connection. Uploaded photos stay in the browser and are not shared. The Save and Create buttons currently show confirmation messages but do not store designs. Style options apply photo filters; they do not generate a 3D room.
+The app shell is cached after the first visit. Sample room photos are hosted on Unsplash and require internet access. Uploaded photos are previewed in the browser and are not uploaded or shared. The current Save and Create buttons display messages but do not store designs.
+
+Style options apply photo filters; they do not generate a 3D room or rearrange furniture.
