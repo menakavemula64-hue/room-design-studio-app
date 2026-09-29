@@ -526,10 +526,8 @@
     }
 
     if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker.register("./service-worker.js").catch(() => {
-          message.textContent = "Offline support could not start. Try refreshing the page.";
-        });
+      navigator.serviceWorker.register("./service-worker.js").catch(() => {
+        message.textContent = "Offline support could not start. Try refreshing the page.";
       });
     }
   </script>
